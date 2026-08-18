@@ -9,8 +9,8 @@
     },
     "settings": {
         "dashboard_config": {
-            "show_session_info": false,
-            "show_energies": false,
+            "show_session_info": true,
+            "show_energies": true,
             "n_jobs": 2,
             "ui_request_timeout": 5
         },
@@ -33,26 +33,6 @@
     },
     "widgets_layout": [
         {
-            "x": 0,
-            "y": 0,
-            "w": 4,
-            "h": 9,
-            "i": "f4c46754-8fad-11f1-abc4-dc215cf4c43c",
-            "name": "Box Volume",
-            "description": "Custom user-defined code",
-            "moved": false
-        },
-        {
-            "x": 4,
-            "y": 0,
-            "w": 4,
-            "h": 9,
-            "i": "3282115e-8fae-11f1-abc4-dc215cf4c43c",
-            "name": "Center of Mass",
-            "description": "Custom user-defined code",
-            "moved": false
-        },
-        {
             "x": 8,
             "y": 0,
             "w": 4,
@@ -68,8 +48,8 @@
             "w": 8,
             "h": 16,
             "i": "90d89b60-8fae-11f1-abc4-dc215cf4c43c",
-            "name": "Customized COMDistance",
-            "description": "Customized distance between two COMs",
+            "name": "COMDistance",
+            "description": "Distance between two COMs",
             "moved": false
         },
         {
@@ -84,98 +64,26 @@
         },
         {
             "x": 0,
-            "y": 25,
+            "y": 0,
             "w": 4,
             "h": 9,
-            "i": "b9211eac-8faf-11f1-abc4-dc215cf4c43c",
-            "name": "ROG",
-            "description": "Radii of Gyration of a selection",
-            "moved": false
-        },
-        {
-            "x": 4,
-            "y": 25,
-            "w": 4,
-            "h": 9,
-            "i": "c6cbd524-8faf-11f1-abc4-dc215cf4c43c",
-            "name": "VACF DC",
-            "description": "Autocorrelation Function",
-            "moved": false
-        },
-        {
-            "x": 8,
-            "y": 25,
-            "w": 4,
-            "h": 9,
-            "i": "db998d20-8faf-11f1-abc4-dc215cf4c43c",
-            "name": "MSD DC",
-            "description": "Mean squared displacement analysis",
-            "moved": false
-        },
-        {
-            "x": 5,
-            "y": 34,
-            "w": 7,
-            "h": 11,
-            "i": "1253f080-8fb0-11f1-abc4-dc215cf4c43c",
-            "name": "DSSP Analysis",
-            "description": "Secondary structure assignment of protein",
-            "moved": false
-        },
-        {
-            "x": 0,
-            "y": 34,
-            "w": 5,
-            "h": 11,
             "i": "3085948c-8fb0-11f1-abc4-dc215cf4c43c",
             "name": "Absolute Temperature",
             "description": "Plot of Absolute Temperature",
             "moved": false
+        },
+        {
+            "x": 4,
+            "y": 0,
+            "w": 4,
+            "h": 9,
+            "i": "9f5c4488-9b03-11f1-b3e7-dc215cf4c43c",
+            "name": "RMSD",
+            "description": "RMSD of a selection",
+            "moved": false
         }
     ],
     "widgets": {
-        "f4c46754-8fad-11f1-abc4-dc215cf4c43c": {
-            "uid": 0,
-            "class_name": "Custom Code",
-            "inputs": [
-                {
-                    "attribute": "_run_frequency",
-                    "value": "every-frame",
-                    "error": null
-                },
-                {
-                    "attribute": "setup_code",
-                    "value": "bv_plot = SimplePlot(u)",
-                    "error": null
-                },
-                {
-                    "attribute": "execute_code",
-                    "value": "print(f\"Volume = {u.trajectory.ts.volume:.2f} \u00c5\u00b3\")\nbv_plot.show(\"Box Volume\", u.trajectory.ts.volume)\n",
-                    "error": null
-                }
-            ]
-        },
-        "3282115e-8fae-11f1-abc4-dc215cf4c43c": {
-            "uid": 0,
-            "class_name": "Custom Code",
-            "inputs": [
-                {
-                    "attribute": "_run_frequency",
-                    "value": "every-frame",
-                    "error": null
-                },
-                {
-                    "attribute": "setup_code",
-                    "value": "com_plt1 = SimplePlot(u)\n",
-                    "error": null
-                },
-                {
-                    "attribute": "execute_code",
-                    "value": "com1 = u.select_atoms(\"resid 2\").center_of_mass()\n# print(\"COM\", com1)\ncom_plt1.show(\"COM (resid 2)\", com1)\n",
-                    "error": null
-                }
-            ]
-        },
         "4f1e3766-8fae-11f1-abc4-dc215cf4c43c": {
             "uid": 0,
             "class_name": "Custom Code",
@@ -259,181 +167,17 @@
             "inputs": [
                 {
                     "attribute": "selection",
-                    "value": "protein",
+                    "value": "resid 1:50",
                     "error": null
                 },
                 {
                     "attribute": "ref",
                     "value": true,
                     "error": null
-                }
-            ]
-        },
-        "b9211eac-8faf-11f1-abc4-dc215cf4c43c": {
-            "uid": 0,
-            "class_name": "ROG",
-            "inputs": [
-                {
-                    "attribute": "_run_frequency",
-                    "value": "every-frame",
-                    "error": null
-                },
-                {
-                    "attribute": "_run_mode",
-                    "value": "serial",
-                    "error": null
-                },
-                {
-                    "attribute": "selection",
-                    "value": "resid 2",
-                    "error": null
-                },
-                {
-                    "attribute": "periodic",
-                    "value": true,
-                    "error": null
-                },
-                {
-                    "attribute": "updating",
-                    "value": false,
-                    "error": null
                 },
                 {
                     "attribute": "custom_title",
                     "value": null,
-                    "error": null
-                },
-                {
-                    "attribute": "maxlen",
-                    "value": 100,
-                    "error": null
-                },
-                {
-                    "attribute": "x_type",
-                    "value": "time",
-                    "error": null
-                }
-            ]
-        },
-        "c6cbd524-8faf-11f1-abc4-dc215cf4c43c": {
-            "uid": 0,
-            "class_name": "ACF",
-            "inputs": [
-                {
-                    "attribute": "_run_mode",
-                    "value": "serial",
-                    "error": null
-                },
-                {
-                    "attribute": "physical_property",
-                    "value": "velocity",
-                    "error": null
-                },
-                {
-                    "attribute": "selection",
-                    "value": "all",
-                    "error": null
-                },
-                {
-                    "attribute": "dim_type",
-                    "value": "xyz",
-                    "error": null
-                },
-                {
-                    "attribute": "centered",
-                    "value": false,
-                    "error": null
-                },
-                {
-                    "attribute": "show_running_integral",
-                    "value": true,
-                    "error": null
-                },
-                {
-                    "attribute": "show_particle_acfs",
-                    "value": false,
-                    "error": null
-                },
-                {
-                    "attribute": "normalized",
-                    "value": false,
-                    "error": null
-                },
-                {
-                    "attribute": "custom_title",
-                    "value": null,
-                    "error": null
-                }
-            ]
-        },
-        "db998d20-8faf-11f1-abc4-dc215cf4c43c": {
-            "uid": 0,
-            "class_name": "MSD Analysis",
-            "inputs": [
-                {
-                    "attribute": "_run_mode",
-                    "value": "serial",
-                    "error": null
-                },
-                {
-                    "attribute": "selection",
-                    "value": "all",
-                    "error": null
-                },
-                {
-                    "attribute": "dim_type",
-                    "value": "xyz",
-                    "error": null
-                },
-                {
-                    "attribute": "show_diffusion_coefficient",
-                    "value": true,
-                    "error": null
-                },
-                {
-                    "attribute": "show_particle_msds",
-                    "value": false,
-                    "error": null
-                },
-                {
-                    "attribute": "log_scale",
-                    "value": false,
-                    "error": null
-                },
-                {
-                    "attribute": "custom_title",
-                    "value": null,
-                    "error": null
-                }
-            ]
-        },
-        "1253f080-8fb0-11f1-abc4-dc215cf4c43c": {
-            "uid": 0,
-            "class_name": "DSSP Analysis",
-            "inputs": [
-                {
-                    "attribute": "_run_frequency",
-                    "value": "every-frame",
-                    "error": null
-                },
-                {
-                    "attribute": "_run_mode",
-                    "value": "serial",
-                    "error": null
-                },
-                {
-                    "attribute": "custom_title",
-                    "value": null,
-                    "error": null
-                },
-                {
-                    "attribute": "maxlen",
-                    "value": 100,
-                    "error": null
-                },
-                {
-                    "attribute": "x_type",
-                    "value": "time",
                     "error": null
                 }
             ]
@@ -450,6 +194,52 @@
                 {
                     "attribute": "title",
                     "value": "Absolute Temperature",
+                    "error": null
+                },
+                {
+                    "attribute": "x_type",
+                    "value": "time",
+                    "error": null
+                }
+            ]
+        },
+        "9f5c4488-9b03-11f1-b3e7-dc215cf4c43c": {
+            "uid": 0,
+            "class_name": "RMSD",
+            "inputs": [
+                {
+                    "attribute": "_run_frequency",
+                    "value": "every-frame",
+                    "error": null
+                },
+                {
+                    "attribute": "_run_mode",
+                    "value": "serial",
+                    "error": null
+                },
+                {
+                    "attribute": "selection",
+                    "value": "protein",
+                    "error": null
+                },
+                {
+                    "attribute": "center",
+                    "value": false,
+                    "error": null
+                },
+                {
+                    "attribute": "superposition",
+                    "value": false,
+                    "error": null
+                },
+                {
+                    "attribute": "custom_title",
+                    "value": null,
+                    "error": null
+                },
+                {
+                    "attribute": "maxlen",
+                    "value": 100,
                     "error": null
                 },
                 {
@@ -475,15 +265,15 @@
                 }
             ]
         },
-        "9adfaef6-8fad-11f1-bc3c-dc215cf4c43c": {
-            "uuid": "9adfaef6-8fad-11f1-bc3c-dc215cf4c43c",
+        "d38f0d76-9b03-11f1-9169-dc215cf4c43c": {
+            "uuid": "d38f0d76-9b03-11f1-9169-dc215cf4c43c",
             "name": "Custom COMDistance",
-            "description": "Customized distance between two COMs",
-            "run_on_launch": true,
+            "description": "Custom distance between two COMs",
+            "run_on_launch": false,
             "cells": [
                 {
-                    "id": "9adfb130-8fad-11f1-bc3c-dc215cf4c43c",
-                    "code": "\"\"\"\nDistance between two center-of-masses\n\"\"\"\n\nimport logging\nfrom collections import deque\nfrom typing import ClassVar\n\nimport matplotlib.pyplot as plt\nfrom IPython.display import display\nfrom MDAnalysis.exceptions import NoDataError\nfrom MDAnalysis.lib.distances import calc_bonds\n\nfrom mdadash.backend.widgets.base import WidgetBase\n\nlogger = logging.getLogger(__name__)\n\n\nclass COMDistance(WidgetBase):\n    \"\"\"COM Distance\n\n    Distance between two center-of-masses (COMs)\n\n    \"\"\"\n\n    name = \"COMDistance\"\n    description = \"Distance between two COMs\"\n    _override_name = True\n\n    _inputs: ClassVar = [\n        {\n            \"attribute\": \"selection1\",\n            \"name\": \"Selection 1\",\n            \"description\": \"First MDAnalysis selection phrase\",\n            \"type\": \"str\",\n            \"validations\": [\"required\"],\n        },\n        {\n            \"attribute\": \"selection2\",\n            \"name\": \"Selection 2\",\n            \"description\": \"Second MDAnalysis selection phrase\",\n            \"type\": \"str\",\n            \"validations\": [\"required\"],\n        },\n        {\n            \"attribute\": \"periodic\",\n            \"name\": \"Periodic\",\n            \"description\": \"Select with periodic boundary conditions\",\n            \"type\": \"bool\",\n        },\n        {\n            \"attribute\": \"updating\",\n            \"name\": \"Updating\",\n            \"description\": \"Update selection during each timestep\",\n            \"type\": \"bool\",\n        },\n        {\n            \"attribute\": \"custom_title\",\n            \"name\": \"Custom title\",\n            \"description\": \"Custom title for the plot\",\n            \"type\": \"str\",\n        },\n        {\n            \"attribute\": \"maxlen\",\n            \"name\": \"Max values\",\n            \"description\": \"Max values to show in plot\",\n            \"type\": \"int\",\n        },\n        {\n            \"attribute\": \"max_distance\",\n            \"name\": \"Max distance\",\n            \"description\": \"Max distance for alert check\",\n            \"type\": \"float\",\n        },\n        {\n            \"attribute\": \"max_distance_alert\",\n            \"name\": \"Alert if distance > 'Max distance'\",\n            \"type\": \"bool\",\n        },\n        {\n            \"attribute\": \"max_distance_pause\",\n            \"name\": \"Pause simulation if distance > 'Max distance'\",\n            \"type\": \"bool\",\n        },\n        {\n            \"attribute\": \"x_type\",\n            \"name\": \"X-axis\",\n            \"type\": \"toggle\",\n            \"options\": [\n                {\"name\": \"Time\", \"value\": \"time\"},\n                {\"name\": \"Step\", \"value\": \"step\"},\n            ],\n        },\n    ]\n\n    def __init__(self):\n        super().__init__()\n        self.selection1 = \"protein\"\n        self.selection2 = \"resid 1\"\n        self.periodic = True\n        self.updating = False\n        self.ag1 = None\n        self.ag2 = None\n        self.max_distance = 50.0\n        self.max_distance_alert = False\n        self.max_distance_pause = False\n        self.title = \"Distance between COMs\"\n        self.custom_title = None\n        self.default_maxlen = 100\n        self.maxlen = self.default_maxlen\n        self.x_type = \"time\"\n        self.x_values = None\n        self._setup_plot()\n        self._reset_plot_values()\n\n    def _setup_plot(self):\n        \"\"\"Setup matplotlib plot\"\"\"\n        self.fig, self.ax = plt.subplots()\n        (self.plot,) = self.ax.plot([], [])\n        self.ax.set_ylabel(\"Distance (\u00c5)\")\n        self.ax.grid(True)\n        self._set_title()\n\n    def _reset_plot_values(self):\n        \"\"\"Reset plot values\"\"\"\n        self.steps = deque(maxlen=self.maxlen)\n        self.times = deque(maxlen=self.maxlen)\n        self.y_values = deque(maxlen=self.maxlen)\n        self._set_x_values()\n\n    def _set_title(self):\n        \"\"\"Set plot title\"\"\"\n        self.ax.set_title(self.custom_title if self.custom_title else self.title)\n\n    def _set_x_values(self):\n        \"\"\"Set the values for the x-axis\"\"\"\n        if self.x_type == \"step\":\n            x_label = \"Step\"\n            self.x_values = self.steps\n        else:\n            x_label = \"Time (ps)\"\n            self.x_values = self.times\n        self.ax.set_xlabel(x_label)\n\n    def _update_selections(self):\n        \"\"\"Update atom groups when selection phrases change\"\"\"\n        self.ag1 = self.u.select_atoms(\n            self.selection1, periodic=self.periodic, updating=self.updating\n        )\n        self.ag2 = self.u.select_atoms(\n            self.selection2, periodic=self.periodic, updating=self.updating\n        )\n        self.title = f\"{self.selection1} <---> {self.selection2}\"\n        self._set_title()\n\n    def on_post_create(self):\n        \"\"\"on_post_create handler\"\"\"\n        self._set_title()\n        self._reset_plot_values()\n\n    def on_post_connect(self):\n        \"\"\"on_post_connect handler\"\"\"\n        self._update_selections()\n\n    def on_input_change(self, attribute, _old_value, new_value):\n        \"\"\"on_input_change handler\"\"\"\n        reset_plot = False\n        if attribute == \"maxlen\":\n            if new_value < 0:\n                self.maxlen = self.default_maxlen\n            reset_plot = True\n        elif attribute == \"x_type\":\n            self._set_x_values()\n        elif attribute == \"custom_title\":\n            self._set_title()\n        elif attribute in (\"selection1\", \"selection2\"):\n            self._update_selections()\n            reset_plot = True\n        elif attribute in (\"periodic\", \"updating\"):\n            self._update_selections()\n        if reset_plot:\n            self._reset_plot_values()\n\n    def run_every_frame(self):\n        \"\"\"every-frame run handler\"\"\"\n        try:\n            com1 = self.ag1.center_of_mass(unwrap=True)\n            com2 = self.ag2.center_of_mass(unwrap=True)\n        except NoDataError:  # pragma: no cover\n            # unwrap can fail if there is no bonds info\n            com1 = self.ag1.center_of_mass()\n            com2 = self.ag2.center_of_mass()\n        dist = calc_bonds(com1, com2, box=self.u.dimensions)\n\n        #print(f\"Distance = {dist:.2f} \u00c5\")\n\n        self.y_values.append(dist)\n        self.steps.append(self.u.trajectory.ts.data[\"step\"])\n        self.times.append(self.u.trajectory.ts.data[\"time\"])\n        # update plot\n        self.plot.set_data(self.x_values, self.y_values)\n        self.ax.relim()\n        self.ax.autoscale_view()\n        self.fig.canvas.draw()\n        display(self.fig)\n        if dist > self.max_distance:\n            if self.max_distance_alert:\n                self.alert(f\"Distance between '{self.title}' > {self.max_distance}\")\n            if self.max_distance_pause:\n                self.pause_simulation()\n"
+                    "id": "d38f0fa6-9b03-11f1-9169-dc215cf4c43c",
+                    "code": "\"\"\"\nDistance between two center-of-masses\n\"\"\"\n\nimport logging\nfrom collections import deque\nfrom typing import ClassVar\n\nimport matplotlib.pyplot as plt\nfrom IPython.display import display\nfrom joblib import delayed\nfrom MDAnalysis.exceptions import NoDataError\nfrom MDAnalysis.lib.distances import calc_bonds\n\nfrom mdadash.backend.widgets.base import WidgetBase\n\nlogger = logging.getLogger(__name__)\n\n\nclass COMDistance(WidgetBase):\n    \"\"\"\n\n    **COM Distance**\n\n    This widget shows the distance between two center-of-masses (COMs).\n\n    **Inputs**\n\n    Run frequency\n        .. compound::\n            The frequency with which the widget is run - `every-frame` or `batch`\n                Default: ``every-frame``\n\n    Run mode\n        The mode in which the widget is run - `serial` or `parallel`\n            Default: ``serial``\n\n    Selection 1\n        First MDAnalysis selection phrase\n            Default: ``protein``\n\n    Selection 2\n        Second MDAnalysis selection phrase\n            Default: ``resid 1``\n\n    Periodic\n        Select with periodic boundary conditions\n            Default: ``True``\n\n    Updating\n        Update selection during each timestep\n            Default: ``False``\n\n    Custom title\n        Custom title for the plot\n            Default: ''\n\n    Max values\n        Max values to show in plot\n            Default: ``100``\n\n    Max distance\n        Max distance for alert check\n            Default: ``50.0``\n\n    Alert if distance > 'Max distance\n        Create an alert if the above condition is met\n            Default: ``False``\n\n    Pause simulation if distance > 'Max distance'\n        Pause the simulation if the above condition is met\n            Default: ``False``\n\n    X-axis\n        X-axis value - `time` or `step`\n            Default: ``time``\n\n    **Output**\n\n    Here is an example output plot of this widget:\n\n    .. figure:: /_static/images/com_distance_output.jpg\n        :alt: COM Distance output\n\n    .. tip::\n        This widget supports batching and can run in parallel\n\n    \"\"\"\n\n    name = \"COMDistance\"\n    description = \"Distance between two COMs\"\n    _override_name = True\n\n    _doclink = (\n        \"https://mdadash.readthedocs.io/en/latest/autosummary/\"\n        \"mdadash.backend.analyses.com_distance.html\"\n    )\n\n    _inputs: ClassVar = [\n        {\n            \"attribute\": \"_run_frequency\",\n            \"name\": \"Run frequency\",\n            \"description\": \"The frequency with which the widget is run\",\n            \"type\": \"select\",\n            \"items\": [\n                \"every-frame\",\n                \"batch\",\n            ],\n        },\n        {\n            \"attribute\": \"_run_mode\",\n            \"name\": \"Run mode\",\n            \"description\": \"The mode in which the widget is run\",\n            \"type\": \"select\",\n            \"items\": [\n                \"serial\",\n                \"parallel\",\n            ],\n        },\n        {\n            \"attribute\": \"selection1\",\n            \"name\": \"Selection 1\",\n            \"description\": \"First MDAnalysis selection phrase\",\n            \"type\": \"str\",\n            \"validations\": [\"required\"],\n        },\n        {\n            \"attribute\": \"selection2\",\n            \"name\": \"Selection 2\",\n            \"description\": \"Second MDAnalysis selection phrase\",\n            \"type\": \"str\",\n            \"validations\": [\"required\"],\n        },\n        {\n            \"attribute\": \"periodic\",\n            \"name\": \"Periodic\",\n            \"description\": \"Select with periodic boundary conditions\",\n            \"type\": \"bool\",\n        },\n        {\n            \"attribute\": \"updating\",\n            \"name\": \"Updating\",\n            \"description\": \"Update selection during each timestep\",\n            \"type\": \"bool\",\n        },\n        {\n            \"attribute\": \"custom_title\",\n            \"name\": \"Custom title\",\n            \"description\": \"Custom title for the plot\",\n            \"type\": \"str\",\n        },\n        {\n            \"attribute\": \"maxlen\",\n            \"name\": \"Max values\",\n            \"description\": \"Max values to show in plot\",\n            \"type\": \"int\",\n        },\n        {\n            \"attribute\": \"max_distance\",\n            \"name\": \"Max distance\",\n            \"description\": \"Max distance for alert check\",\n            \"type\": \"float\",\n        },\n        {\n            \"attribute\": \"max_distance_alert\",\n            \"name\": \"Alert if distance > 'Max distance'\",\n            \"type\": \"bool\",\n        },\n        {\n            \"attribute\": \"max_distance_pause\",\n            \"name\": \"Pause simulation if distance > 'Max distance'\",\n            \"type\": \"bool\",\n        },\n        {\n            \"attribute\": \"x_type\",\n            \"name\": \"X-axis\",\n            \"type\": \"toggle\",\n            \"options\": [\n                {\"name\": \"Time\", \"value\": \"time\"},\n                {\"name\": \"Step\", \"value\": \"step\"},\n            ],\n        },\n    ]\n\n    def __init__(self):\n        super().__init__()\n        self.selection1 = \"protein\"\n        self.selection2 = \"resid 1\"\n        self.periodic = True\n        self.updating = False\n        self.ag1 = None\n        self.ag2 = None\n        self.max_distance = 50.0\n        self.max_distance_alert = False\n        self.max_distance_pause = False\n        self.title = \"Distance between COMs\"\n        self.custom_title = None\n        self.default_maxlen = 100\n        self.maxlen = self.default_maxlen\n        self.x_type = \"time\"\n        self.x_values = None\n        self._setup_plot()\n        self._reset_plot_values()\n\n    def _setup_plot(self):\n        \"\"\"Setup matplotlib plot\"\"\"\n        self.fig, self.ax = plt.subplots()\n        (self.plot,) = self.ax.plot([], [])\n        self.ax.set_ylabel(\"Distance (\u00c5)\")\n        self.ax.grid(True)\n        self._set_title()\n\n    def _reset_plot_values(self):\n        \"\"\"Reset plot values\"\"\"\n        self.steps = deque(maxlen=self.maxlen)\n        self.times = deque(maxlen=self.maxlen)\n        self.y_values = deque(maxlen=self.maxlen)\n        self._set_x_values()\n\n    def _set_title(self):\n        \"\"\"Set plot title\"\"\"\n        self.ax.set_title(\n            self.custom_title.replace(\"\\\\n\", \"\\n\") if self.custom_title else self.title\n        )\n\n    def _set_x_values(self):\n        \"\"\"Set the values for the x-axis\"\"\"\n        if self.x_type == \"step\":\n            x_label = \"Step\"\n            self.x_values = self.steps\n        else:\n            x_label = \"Time (ps)\"\n            self.x_values = self.times\n        self.ax.set_xlabel(x_label)\n\n    def _update_selections(self):\n        \"\"\"Update atom groups when selection phrases change\"\"\"\n        self.ag1 = self.u.select_atoms(\n            self.selection1, periodic=self.periodic, updating=self.updating\n        )\n        self.ag2 = self.u.select_atoms(\n            self.selection2, periodic=self.periodic, updating=self.updating\n        )\n        self.title = f\"{self.selection1} <---> {self.selection2}\"\n        self._set_title()\n\n    def on_post_create(self):\n        \"\"\":meth:`~mdadash.backend.widgets.base.WidgetBase.on_post_create` handler\"\"\"\n        self._set_title()\n        self._reset_plot_values()\n\n    def on_post_connect(self):\n        \"\"\":meth:`~mdadash.backend.widgets.base.WidgetBase.on_post_connect` handler\"\"\"\n        self._update_selections()\n\n    def on_input_change(self, attribute, _old_value, new_value):\n        \"\"\":meth:`~mdadash.backend.widgets.base.WidgetBase.on_input_change` handler\"\"\"\n        reset_plot = False\n        if attribute == \"maxlen\":\n            if new_value < 0:\n                self.maxlen = self.default_maxlen\n            reset_plot = True\n        elif attribute == \"x_type\":\n            self._set_x_values()\n        elif attribute == \"custom_title\":\n            self._set_title()\n        elif attribute in (\"selection1\", \"selection2\"):\n            self._update_selections()\n            reset_plot = True\n        elif attribute in (\"periodic\", \"updating\"):\n            self._update_selections()\n        if reset_plot:\n            self._reset_plot_values()\n\n    def _compute_current_frame(self):\n        \"\"\"Compute for current frame\"\"\"\n        try:\n            com1 = self.ag1.center_of_mass(unwrap=True)\n            com2 = self.ag2.center_of_mass(unwrap=True)\n        except NoDataError:  # pragma: no cover\n            # unwrap can fail if there is no bonds info\n            com1 = self.ag1.center_of_mass()\n            com2 = self.ag2.center_of_mass()\n        dist = calc_bonds(com1, com2, box=self.u.dimensions)\n        print(f\"Distance = {dist:.2f} \u00c5\")\n        return (\n            self.u.trajectory.ts.data[\"step\"],\n            self.u.trajectory.ts.data[\"time\"],\n            dist,\n        )\n\n    def _compute_batch(self):\n        \"\"\"Compute for current batch\"\"\"\n        values = []\n        for i in range(self.u.trajectory.buffer_size):\n            _ = self.u.trajectory[i]\n            values.append(self._compute_current_frame())\n        return values\n\n    def _update_plot(self, values):\n        \"\"\"Append values and update plot\"\"\"\n        if isinstance(values, tuple):\n            values = [values]\n        alerted = False\n        paused = False\n        for value in values:\n            (steps, times, dist) = value\n            self.steps.append(steps)\n            self.times.append(times)\n            self.y_values.append(dist)\n            if dist > self.max_distance:\n                if self.max_distance_alert and not alerted:\n                    self.alert(f\"Distance between '{self.title}' > {self.max_distance}\")\n                    alerted = True\n                if self.max_distance_pause and not paused:\n                    self.pause_simulation()\n                    paused = True\n        # update plot points\n        self.plot.set_data(self.x_values, self.y_values)\n        self.ax.relim()\n        self.ax.autoscale_view()\n        self.fig.canvas.draw()\n        display(self.fig)\n\n    def run_every_frame(self):\n        \"\"\":meth:`~mdadash.backend.widgets.base.WidgetBase.run_every_frame` handler\"\"\"\n        self._update_plot(self._compute_current_frame())\n\n    def run_batch(self):\n        \"\"\":meth:`~mdadash.backend.widgets.base.WidgetBase.run_batch` handler\"\"\"\n        self._update_plot(self._compute_batch())\n\n    def get_parallel_job(self):\n        \"\"\":meth:`~mdadash.backend.widgets.base.WidgetBase.get_parallel_job` handler\"\"\"\n        if self._run_frequency == \"batch\":\n            return delayed(self._compute_batch)()\n        return delayed(self._compute_current_frame)()\n\n    def apply_parallel_results(self, values):\n        \"\"\":meth:`~mdadash.backend.widgets.base.WidgetBase.apply_parallel_results` handler\"\"\"\n        self._update_plot(values)\n"
                 }
             ]
         }
