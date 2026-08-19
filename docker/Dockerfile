@@ -2,6 +2,8 @@ FROM ubuntu:24.04
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     libgomp1 \
+    curl \
+    ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
@@ -16,5 +18,8 @@ ENV PATH="/usr/local/gromacs/bin:${PATH}"
 ENV LD_LIBRARY_PATH="/usr/local/gromacs/lib"
 
 WORKDIR /workdir
+
+ENV UV_CACHE_DIR=/workdir/.uv_cache
+RUN uvx mdadash --version || true
 
 ENTRYPOINT ["/workdir/entrypoint.sh"]
