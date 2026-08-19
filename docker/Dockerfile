@@ -19,4 +19,7 @@ ENV LD_LIBRARY_PATH="/usr/local/gromacs/lib"
 
 WORKDIR /workdir
 
+RUN uv tool install mdadash
+ENV PATH="/root/.local/bin:$PATH"
+
 ENTRYPOINT ["/workdir/entrypoint.sh"]
