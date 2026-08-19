@@ -8,11 +8,11 @@ STATE_FILE="state.json"
 TMP_STATE_FILE="state.json.tmp"
 RAW_STATE_URL="https://raw.githubusercontent.com/PardhavMaradani/mdadash-demo/refs/heads/main/docker/mdadash/state.json"
 
-if curl -sS -fL "$RAW_STATE_URL" -o "$TMP_STATE_FILE"; then
-    mv "$TMP_STATE_FILE" "$STATE_FILE"
-else
-    echo "WARNING: Failed to download latest state.json from repo."
-fi
+#if curl -sS -fL "$RAW_STATE_URL" -o "$TMP_STATE_FILE"; then
+#    mv "$TMP_STATE_FILE" "$STATE_FILE"
+#else
+#    echo "WARNING: Failed to download latest state.json from repo."
+#fi
 
 mdadash --topology=/workdir/simulation/input/start.gro \
     --trajectory imd://localhost:8889 \
