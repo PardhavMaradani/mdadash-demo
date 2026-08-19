@@ -19,7 +19,4 @@ ENV LD_LIBRARY_PATH="/usr/local/gromacs/lib"
 
 WORKDIR /workdir
 
-ENV UV_CACHE_DIR=/workdir/.uv_cache
-RUN uvx mdadash --version || true
-
 ENTRYPOINT ["/workdir/entrypoint.sh"]
