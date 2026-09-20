@@ -3,6 +3,7 @@
 ## Docker
 
 ```sh
+docker pull ghcr.io/pardhavmaradani/mdadash-demo:latest
 docker run -it -p 8000:8000 ghcr.io/pardhavmaradani/mdadash-demo:latest
 ```
 
