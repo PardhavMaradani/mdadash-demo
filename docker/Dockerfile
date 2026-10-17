@@ -1,7 +1,6 @@
 FROM ubuntu:24.04
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
     libgomp1 \
     curl \
     ca-certificates \
@@ -20,7 +19,7 @@ ENV LD_LIBRARY_PATH="/usr/local/gromacs/lib"
 
 WORKDIR /workdir
 
-RUN uv tool install mdadash
+RUN uv tool install mdadash --python 3.14
 ENV PATH="/root/.local/bin:$PATH"
 
 ENTRYPOINT ["/workdir/entrypoint.sh"]
