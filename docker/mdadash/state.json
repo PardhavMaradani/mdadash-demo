@@ -27,7 +27,8 @@
                 "total_steps": 500000,
                 "batch_size": 100,
                 "custom_universe_setup": "from MDAnalysis import transformations\n\nif not u.trajectory.transformations:\n    u.trajectory.add_transformations(transformations.NoJump())\nelse:\n    print(u.trajectory.transformations)\n",
-                "kwargs": []
+                "kwargs": [],
+                "shared_memory": false
             }
         ]
     },
