@@ -14,7 +14,7 @@ RAW_STATE_URL="https://raw.githubusercontent.com/PardhavMaradani/mdadash-demo/re
 #    echo "WARNING: Failed to download latest state.json from repo."
 #fi
 
-mdadash --topology=/workdir/simulation/input/start.gro \
+mdadash --topology=/workdir/simulation/input/start.tpr \
     --trajectory imd://localhost:8889 \
     --dashboard-host=0.0.0.0 \
     --state-file=/workdir/mdadash/state.json

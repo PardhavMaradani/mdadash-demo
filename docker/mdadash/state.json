@@ -16,7 +16,7 @@
         },
         "universe_configs": [
             {
-                "topology": "/tmp/start.gro",
+                "topology": "/tmp/start.tpr",
                 "trajectory": "imd://localhost:8889",
                 "nojump": false,
                 "socket_bufsize": null,
